@@ -22,4 +22,12 @@ jobs:
         run: pytest
         continue-on-error: true
       - name: check execution
-        run: echo error ignored    
+        run: echo error ignored
+      - name: Install docker
+        uses: docker-practice/actions-setup-docker@master
+        timeout-minutes: 12
+      - name: Build docker image    
+        run: |
+          set -x
+          docker version
+          docker build -t pythondockerimg .    
