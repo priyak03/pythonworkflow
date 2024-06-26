@@ -7,7 +7,7 @@ on:
   workflow_dispatch:        
 jobs:
   pybuildjob1:
-    runs-on: runner1 
+    runs-on: self-hosted
     steps:
       - name: login as root user in ubuntu
         run: sudo su -
