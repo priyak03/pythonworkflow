@@ -1,0 +1,27 @@
+name:  codeql project
+
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:        
+jobs:
+  pybuildjob1:
+    runs-on: ubuntu-latest 
+    steps:
+      - name: login as root user in ubuntu
+        run: sudo su -
+      - name: codecheckout 
+        uses: actions/checkout@v4
+      - name: codeql verification
+        uses: github/codeql-action/init@v2
+        with:
+          languages: python 
+      - name: Autobuild
+      uses: github/codeql-action/autobuild@v2
+
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v2
+      with:
+        upload: False
+        output: sarif-results      
