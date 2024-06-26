@@ -31,12 +31,12 @@ jobs:
       - name: Build docker image    
         run: |
           set -x
-          docker version
-          docker build -t priya3103/pythondockerimg1 .
+          sudo docker version
+          sudo docker build -t priya3103/pythondockerimg1 .
       - name: Docker login
         uses: docker/login-action@v3
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }} 
       - name: docker push
-        run: docker push priya3103/pythondockerimg1      
+        run: sudo docker push priya3103/pythondockerimg1      
